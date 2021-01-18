@@ -1,0 +1,50 @@
+@import 'config';
+
+h1 {
+  font-size: 10rem;
+  color: rgb(179, 131, 226);
+  text-align: center;
+  opacity: 0.4;
+}
+
+.form {
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  display: block;
+  padding: 1rem 2rem;
+  width: 100%;
+  border: none;
+  font-size: 2rem;
+  color: #444;
+  &::placeholder {
+    color: #d5d5d5;
+  }
+  &:focus {
+    outline-color: rgb(179, 131, 226);
+  }
+}
+
+.todos {
+  background-color: #fff;
+  list-style-type: none;
+  li {
+    padding: 1rem 2rem;
+    border-top: 1px solid #e5e5e5;
+    font-size: 1.5rem;
+    cursor: pointer;
+    &.completed {
+      color: #d6d6d6;
+      text-decoration: line-through;
+    }
+  }
+}
+
+small {
+  margin-top: 3rem;
+  color: #d5d5d5;
+  text-align: center;
+}

@@ -4,10 +4,12 @@ const todosUl = document.getElementById('todos') as HTMLUListElement;
 
 const todos = JSON.parse(localStorage.getItem('todos') as string);
 
+type Todo = { text: string; completed: boolean };
+
 function updateLS() {
   const todosEl = document.querySelectorAll('li');
 
-  const todosArray: { text: string; completed: boolean }[] = [];
+  const todosArray: Todo[] = [];
 
   todosEl.forEach((todoEl) => {
     todosArray.push({
@@ -19,7 +21,7 @@ function updateLS() {
   localStorage.setItem('todos', JSON.stringify(todosArray));
 }
 
-function addTodo(todo: { text: string; completed: boolean } | undefined) {
+function addTodo(todo?: Todo) {
   let todoText = input.value;
 
   if (todo) {
@@ -54,7 +56,7 @@ function addTodo(todo: { text: string; completed: boolean } | undefined) {
 }
 
 if (todos) {
-  todos.forEach((todo: { text: string; completed: boolean } | undefined) => {
+  todos.forEach((todo: Todo) => {
     addTodo(todo);
   });
 }

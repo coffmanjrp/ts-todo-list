@@ -1,12 +1,12 @@
 "use strict";
-const form = document.getElementById('form');
-const input = document.getElementById('input');
-const todosUl = document.getElementById('todos');
-const todos = JSON.parse(localStorage.getItem('todos'));
+var form = document.getElementById('form');
+var input = document.getElementById('input');
+var todosUl = document.getElementById('todos');
+var todos = JSON.parse(localStorage.getItem('todos'));
 function updateLS() {
-    const todosEl = document.querySelectorAll('li');
-    const todosArray = [];
-    todosEl.forEach((todoEl) => {
+    var todosEl = document.querySelectorAll('li');
+    var todosArray = [];
+    todosEl.forEach(function (todoEl) {
         todosArray.push({
             text: todoEl.innerText,
             completed: todoEl.classList.contains('completed'),
@@ -15,36 +15,36 @@ function updateLS() {
     localStorage.setItem('todos', JSON.stringify(todosArray));
 }
 function addTodo(todo) {
-    let todoText = input.value;
+    var todoText = input.value;
     if (todo) {
         todoText = todo.text;
     }
     if (todoText) {
-        const todoEl = document.createElement('li');
+        var todoEl_1 = document.createElement('li');
         if (todo && todo.completed) {
-            todoEl.classList.add('completed');
+            todoEl_1.classList.add('completed');
         }
-        todoEl.innerText = todoText;
-        todoEl.addEventListener('click', () => {
-            todoEl.classList.toggle('completed');
+        todoEl_1.innerText = todoText;
+        todoEl_1.addEventListener('click', function () {
+            todoEl_1.classList.toggle('completed');
             updateLS();
         });
-        todoEl.addEventListener('contextmenu', (e) => {
+        todoEl_1.addEventListener('contextmenu', function (e) {
             e.preventDefault();
-            todoEl.remove();
+            todoEl_1.remove();
             updateLS();
         });
-        todosUl.appendChild(todoEl);
+        todosUl.appendChild(todoEl_1);
         input.value = '';
         updateLS();
     }
 }
 if (todos) {
-    todos.forEach((todo) => {
+    todos.forEach(function (todo) {
         addTodo(todo);
     });
 }
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', function (e) {
     e.preventDefault();
     addTodo();
 });
